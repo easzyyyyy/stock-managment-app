@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StockManagmentApp.Model;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
+// MySQL libraries added in references
 
 namespace StockManagmentApp
 {
@@ -22,7 +14,17 @@ namespace StockManagmentApp
     {
         public MainWindow()
         {
+            Database database = new Database();
+            database.Open();
+
             InitializeComponent();
+            DisplayStockList(database);
+        }
+
+        private void DisplayStockList(Database database)
+        {
+            StockList.Read(database);
+            StockListView.ItemsSource = StockList.List;
         }
     }
 }

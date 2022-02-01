@@ -1,19 +1,19 @@
 ﻿StockManagmentApp
-1.0.0.0
+
 
 winexe
 C#
 .cs
-C:\Users\Easzy\Documents\IT\CS\stock-managment-app\Code\StockManagmentApp\StockManagmentApp\obj\Debug\netcoreapp3.1\
+C:\Users\Easzy\Documents\IT\CS\stock-managment-app\Code\StockManagmentApp\StockManagmentApp\obj\Debug\net5.0-windows\
 StockManagmentApp
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\Code\StockManagmentApp\StockManagmentApp\App.xaml
 11407045341
 
-9-393218537
-192-1533232326
+81880996994
+2011962960340
 MainWindow.xaml;
 
 False
