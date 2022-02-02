@@ -7,7 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\AddPlaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddProductView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddStockView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StockListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddPlaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddProductView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddStockView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StockListView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StockManagmentApp"
+        xmlns:views="clr-namespace:StockManagmentApp.Views"
+        xmlns:viewmodels="clr-namespace:StockManagmentApp.ViewModels"
         mc:Ignorable="d"
         Title="Easzy's Stock Managment" Height="450" Width="800">
 
@@ -31,7 +32,23 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+
+        <DataTemplate x:Name="StockListViewTemplate" DataType="{x:Type viewmodels:StockListViewModel}">
+            <views:StockListView DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="AddStockViewTemplate" DataType="{x:Type viewmodels:AddStockViewModel}">
+            <views:AddStockView DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="AddPlaceViewTemplate" DataType="{x:Type viewmodels:AddPlaceViewModel}">
+            <views:AddPlaceView DataContext="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Name="AddProductViewTemplate" DataType="{x:Type viewmodels:AddProductViewModel}">
+            <views:AddProductView DataContext="{Binding}" />
+        </DataTemplate>
+
     </Window.Resources>
     
     <StackPanel>
@@ -44,52 +61,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource TopButton}" Grid.Column="0" Content="See stock list" />
-            <Button Style="{StaticResource TopButton}" Grid.Column="1" Content="Add a stock" />
-            <Button Style="{StaticResource TopButton}" Grid.Column="2" Content="Add a place" />
-            <Button Style="{StaticResource TopButton}" Grid.Column="3" Content="Add a product" />
+            <Button x:Name="SeeStockListButton" Click="SeeStockListButton_Click" Style="{StaticResource TopButton}" Grid.Column="0" Content="See stock list" />
+            <Button x:Name="AddStockButton" Click="AddStockButton_Click" Style="{StaticResource TopButton}" Grid.Column="1" Content="Add a stock" />
+            <Button x:Name="AddPlaceButton" Click="AddPlaceButton_Click" Style="{StaticResource TopButton}" Grid.Column="2" Content="Add a place" />
+            <Button x:Name="AddProductButton" Click="AddProductButton_Click"  Style="{StaticResource TopButton}" Grid.Column="3" Content="Add a product" />
         </Grid>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <ContentControl Content="{Binding}"></ContentControl>
 
-            <Label Content="ID" FontWeight="Bold" Grid.Column="0" />
-            <Label Content="Place" FontWeight="Bold" Grid.Column="1" />
-            <Label Content="Product" FontWeight="Bold" Grid.Column="2" />
-            <Label Content="Quantity" FontWeight="Bold" Grid.Column="3" />
-            <Label Content="Last Arrival" FontWeight="Bold" Grid.Column="4" />
-            <Label Content="Next Arrival" FontWeight="Bold" Grid.Column="5" />
-        </Grid>
-        
-        <ListView x:Name="StockListView" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="0.5*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label Content="{Binding ID}" Grid.Column="0" />
-                        <Label Content="{Binding Place.Name}" Grid.Column="1" />
-                        <Label Content="{Binding Product.Name}" Grid.Column="2" />
-                        <Label Content="{Binding Amount}" Grid.Column="3" />
-                        <Label Content="{Binding LastArrival}" Grid.Column="4" />
-                        <Label Content="{Binding NextArrival}" Grid.Column="5" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
     </StackPanel>
 </Window>

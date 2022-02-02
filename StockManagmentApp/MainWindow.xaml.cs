@@ -1,7 +1,8 @@
-﻿using StockManagmentApp.Model;
+﻿using StockManagmentApp.Models;
 using System.Windows;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using StockManagmentApp.ViewModels;
 
 // MySQL libraries added in references
 
@@ -18,13 +19,34 @@ namespace StockManagmentApp
             database.Open();
 
             InitializeComponent();
-            DisplayStockList(database);
+            DataContext = new StockListViewModel();
+            //DisplayStockList(database);
         }
 
-        private void DisplayStockList(Database database)
+        //private void DisplayStockList(Database database)
+        //{
+        //    StockList.Read(database);
+        //    StockListListView.ItemsSource = StockList.List;
+        //}
+
+        private void SeeStockListButton_Click(object sender, RoutedEventArgs e)
         {
-            StockList.Read(database);
-            StockListView.ItemsSource = StockList.List;
+            DataContext = new StockListViewModel();
+        }
+
+        private void AddStockButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AddStockViewModel();
+        }
+
+        private void AddPlaceButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AddPlaceViewModel();
+        }
+
+        private void AddProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AddProductViewModel();
         }
     }
 }
