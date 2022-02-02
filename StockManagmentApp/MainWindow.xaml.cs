@@ -15,19 +15,9 @@ namespace StockManagmentApp
     {
         public MainWindow()
         {
-            Database database = new Database();
-            database.Open();
-
             InitializeComponent();
             DataContext = new StockListViewModel();
-            //DisplayStockList(database);
         }
-
-        //private void DisplayStockList(Database database)
-        //{
-        //    StockList.Read(database);
-        //    StockListListView.ItemsSource = StockList.List;
-        //}
 
         private void SeeStockListButton_Click(object sender, RoutedEventArgs e)
         {
