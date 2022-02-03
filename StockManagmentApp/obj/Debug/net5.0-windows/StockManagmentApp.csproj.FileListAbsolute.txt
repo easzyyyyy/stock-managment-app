@@ -62,10 +62,8 @@ C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\n
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\StockManagmentApp.csproj.AssemblyReference.cache
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\AddPlaceView.g.cs
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\AddProductView.g.cs
-C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\AddStockView.g.cs
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\StockListView.g.cs
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\AddPlaceView.baml
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\AddProductView.baml
-C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\AddStockView.baml
 C:\Users\Easzy\Documents\IT\CS\stock-managment-app\StockManagmentApp\obj\Debug\net5.0-windows\Views\StockListView.baml

@@ -134,7 +134,7 @@ namespace StockManagmentApp.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/StockManagmentApp;V1.0.0.0;component/views/addplaceview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/StockManagmentApp;component/views/addplaceview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AddPlaceView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

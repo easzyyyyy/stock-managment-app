@@ -39,5 +39,17 @@ namespace StockManagmentApp.Models
             Name = reader.GetString(15);
             Price = reader.GetInt32(16);
         }
+
+        public void InsertInDatabase()
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter("@type", Type));
+            parameters.Add(new MySqlParameter("@name", Name));
+            parameters.Add(new MySqlParameter("@price", Price));
+
+            MySqlDataReader reader = Database.Command($"INSERT INTO Products VALUES (NULL, @type, @name, @price)", parameters);
+
+            reader.Close();
+        }
     }
 }

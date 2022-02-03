@@ -8,13 +8,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <StackPanel Background="White">
+    <DockPanel Background="White" LastChildFill="False" Margin="10">
 
-        <Grid>
+        <Grid DockPanel.Dock="Top" Background="LightGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <!-- Hardcoded but this is the padding for the ScrollBar -->
+                <ColumnDefinition Width="17" />
             </Grid.ColumnDefinitions>
 
             <Label Content="Type" FontWeight="Bold" Grid.Column="0" />
@@ -22,18 +24,46 @@
             <Label Content="Price" FontWeight="Bold" Grid.Column="2" />
         </Grid>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <ScrollViewer x:Name="AddProductScrollView" DockPanel.Dock="Top" MaxHeight="200">
+            <ListView x:Name="AddProductListView" HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-            <TextBox Text="Type" GotFocus="TextBox_GotFocus" Grid.Column="0" />
-            <TextBox Text="Name" GotFocus="TextBox_GotFocus" Grid.Column="1" />
-            <TextBox Text="Price" GotFocus="TextBox_GotFocus" Grid.Column="2" />
-        </Grid>
+                            <Label Content="{Binding Type}" Grid.Column="0" />
+                            <Label Content="{Binding Name}" Grid.Column="1" />
+                            <Label Content="{Binding Price}" Grid.Column="2" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
 
-    </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Margin="0 20 0 0">
+
+            <Grid x:Name="ProductFormGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <!-- Hardcoded but this is the padding for the ScrollBar -->
+                    <ColumnDefinition Width="17" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="TypeTextBox" Text="Type" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="0" />
+                <TextBox x:Name="NameTextBox" Text="Name" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="1" />
+                <TextBox x:Name="PriceTextBox" Text="Price" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="2" />
+            </Grid>
+
+            <Button x:Name="AddProductButton" Click="AddProductButton_Click" Content="Add" Width="50" Margin="0 10" />
+
+        </StackPanel>
+
+    </DockPanel>
     
 </UserControl>

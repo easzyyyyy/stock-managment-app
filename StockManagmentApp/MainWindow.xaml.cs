@@ -27,11 +27,6 @@ namespace StockManagmentApp
             DataContext = new StockListViewModel();
         }
 
-        private void AddStockButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AddStockViewModel();
-        }
-
         private void AddPlaceButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new AddPlaceViewModel();
