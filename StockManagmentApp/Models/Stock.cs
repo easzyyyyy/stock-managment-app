@@ -13,30 +13,46 @@ namespace StockManagmentApp.Models
         public int Amount { get; init; }
         public DateTime LastArrival { get; init; }
         public DateTime NextArrival { get; init; }
-
-        public static List<Stock> List()
+        public static List<Stock> List
         {
-            List<Stock> list = new List<Stock>();
-
-            MySqlDataReader reader = Database.Command("SELECT * FROM Stocks INNER JOIN Places ON Stocks.id_place = Places.id_place INNER JOIN Products ON Stocks.id_product = Products.id_product;");
-
-            while (reader.Read())
+            get
             {
-                int id = reader.GetInt32(0);
+                List<Stock> list = new List<Stock>();
 
-                Place place = new Place(reader);
-                Product product = new Product(reader);
+                MySqlDataReader reader = Database.Command("SELECT * FROM Stocks INNER JOIN Places ON Stocks.id_place = Places.id_place INNER JOIN Products ON Stocks.id_product = Products.id_product;");
 
-                int amount = reader.GetInt32(3);
-                DateTime lastArrival = reader.GetDateTime(4);
-                DateTime nextArrival = reader.GetDateTime(5);
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
 
-                list.Add(new Stock { ID = id, Place = place, Product = product, Amount = amount, LastArrival = lastArrival, NextArrival = nextArrival });
+                    Place place = new Place(reader);
+                    Product product = new Product(reader);
+
+                    int amount = reader.GetInt32(3);
+                    DateTime lastArrival = reader.GetDateTime(4);
+                    DateTime nextArrival = reader.GetDateTime(5);
+
+                    list.Add(new Stock { ID = id, Place = place, Product = product, Amount = amount, LastArrival = lastArrival, NextArrival = nextArrival });
+                }
+
+                reader.Close();
+
+                return list;
             }
+        }
+
+        public void InsertInDatabase()
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter("@id_place", Place.ID));
+            parameters.Add(new MySqlParameter("@id_product", Product.ID));
+            parameters.Add(new MySqlParameter("@amount", Amount));
+            parameters.Add(new MySqlParameter("@last_arrival", LastArrival.ToString("yyyy-MM-dd")));
+            parameters.Add(new MySqlParameter("@next_arrival", NextArrival.ToString("yyyy-MM-dd")));
+
+            MySqlDataReader reader = Database.Command($"INSERT INTO Stocks VALUES (NULL, @id_place, @id_product, @amount, @last_arrival, @next_arrival)", parameters);
 
             reader.Close();
-
-            return list;
         }
     }
 }

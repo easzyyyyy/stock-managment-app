@@ -18,6 +18,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <!-- Hardcoded but this is the padding for the ScrollBar -->
+                <ColumnDefinition Width="17" />
             </Grid.ColumnDefinitions>
 
             <Label Content="Name" FontWeight="Bold" Grid.Column="0" />
@@ -28,8 +30,8 @@
             <Label Content="Price" FontWeight="Bold" Grid.Column="5" />
         </Grid>
 
-        <ScrollViewer x:Name="StockListScrollView" DockPanel.Dock="Top" MaxHeight="200">
-            <ListView x:Name="StockListListView" HorizontalContentAlignment="Stretch">
+        <ScrollViewer x:Name="AddPlaceScrollView" DockPanel.Dock="Top" MaxHeight="200">
+            <ListView x:Name="AddPlaceListView" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -64,6 +66,8 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <!-- Hardcoded but this is the padding for the ScrollBar -->
+                    <ColumnDefinition Width="17" />
                 </Grid.ColumnDefinitions>
 
                 <TextBox x:Name="NameTextBox" Text="Name" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="0" />

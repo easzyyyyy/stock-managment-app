@@ -30,8 +30,8 @@ namespace StockManagmentApp.Views
 
         private void Update()
         {
-            StockListListView.ItemsSource = Place.List();
-            StockListScrollView.ScrollToBottom();
+            AddPlaceListView.ItemsSource = Place.List;
+            AddPlaceScrollView.ScrollToBottom();
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

@@ -7,50 +7,86 @@
              xmlns:viewmodels="clr-namespace:StockManagmentApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <StackPanel Background="White">
-    
-        <Grid>
+
+    <DockPanel Background="White" LastChildFill="False" Margin="10">
+
+        <Grid DockPanel.Dock="Top" Background="LightGray">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <!-- Hardcoded but this is the padding for the ScrollBar -->
+                <ColumnDefinition Width="17" />
             </Grid.ColumnDefinitions>
 
-            <Label Content="ID" FontWeight="Bold" Grid.Column="0" />
-            <Label Content="Place" FontWeight="Bold" Grid.Column="1" />
-            <Label Content="Product" FontWeight="Bold" Grid.Column="2" />
-            <Label Content="Quantity" FontWeight="Bold" Grid.Column="3" />
-            <Label Content="Last Arrival" FontWeight="Bold" Grid.Column="4" />
-            <Label Content="Next Arrival" FontWeight="Bold" Grid.Column="5" />
+            <Label Content="Place" FontWeight="Bold" Grid.Column="0" />
+            <Label Content="Product" FontWeight="Bold" Grid.Column="1" />
+            <Label Content="Amount" FontWeight="Bold" Grid.Column="2" />
+            <Label Content="Last Arrival" FontWeight="Bold" Grid.Column="3" />
+            <Label Content="Next Arrival" FontWeight="Bold" Grid.Column="4" />
         </Grid>
 
-        <ListView x:Name="StockListListView" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="0.5*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+        <ScrollViewer x:Name="StockListScrollView" DockPanel.Dock="Top" MaxHeight="200">
+            <ListView x:Name="StockListListView" HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Label Content="{Binding ID}" Grid.Column="0" />
-                        <Label Content="{Binding Place.Name}" Grid.Column="1" />
-                        <Label Content="{Binding Product.Name}" Grid.Column="2" />
-                        <Label Content="{Binding Amount}" Grid.Column="3" />
-                        <Label Content="{Binding LastArrival}" Grid.Column="4" />
-                        <Label Content="{Binding NextArrival}" Grid.Column="5" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
-    </StackPanel>
+                            <Label Content="{Binding Place.Name}" Grid.Column="0" />
+                            <Label Content="{Binding Product.Name}" Grid.Column="1" />
+                            <Label Content="{Binding Amount}" Grid.Column="2" />
+                            <Label Content="{Binding LastArrival}" Grid.Column="3" />
+                            <Label Content="{Binding NextArrival}" Grid.Column="4" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+
+        <StackPanel DockPanel.Dock="Bottom" Margin="0 20 0 0">
+
+            <Grid x:Name="StockFormGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <!-- Hardcoded but this is the padding for the ScrollBar -->
+                    <ColumnDefinition Width="17" />
+                </Grid.ColumnDefinitions>
+
+                <ComboBox x:Name="PlaceComboBox" Grid.Column="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox x:Name="ProductComboBox" Grid.Column="1">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBox x:Name="AmountTextBox" Text="Amount" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="2" />
+                <DatePicker x:Name="LastArrivalDatePicker" Text="dzdaz" Grid.Column="3" />
+                <DatePicker x:Name="NextArrivalDatePicker" Text="dzdaz" Grid.Column="4" />
+            </Grid>
+
+            <Button x:Name="AddStockButton" Click="AddStockButton_Click" Content="Add" Width="50" Margin="0 10" />
+
+        </StackPanel>
+
+    </DockPanel>
 </UserControl>
