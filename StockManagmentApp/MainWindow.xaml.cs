@@ -15,7 +15,10 @@ namespace StockManagmentApp
     {
         public MainWindow()
         {
+            Database.Open();
+
             InitializeComponent();
+
             DataContext = new StockListViewModel();
         }
 

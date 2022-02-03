@@ -7,10 +7,10 @@
              xmlns:viewmodels="clr-namespace:StockManagmentApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <StackPanel Background="White">
-        
-        <Grid>
+
+    <DockPanel Background="White" LastChildFill="False" Margin="10">
+
+        <Grid DockPanel.Dock="Top" Background="LightGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -28,24 +28,56 @@
             <Label Content="Price" FontWeight="Bold" Grid.Column="5" />
         </Grid>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <ScrollViewer x:Name="StockListScrollView" DockPanel.Dock="Top" MaxHeight="200">
+            <ListView x:Name="StockListListView" HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-            <TextBox Text="Name" GotFocus="TextBox_GotFocus" Grid.Column="0" />
-            <TextBox Text="Address" GotFocus="TextBox_GotFocus" Grid.Column="1" />
-            <TextBox Text="Country" GotFocus="TextBox_GotFocus" Grid.Column="2" />
-            <TextBox Text="City" GotFocus="TextBox_GotFocus" Grid.Column="3" />
-            <TextBox Text="Area" GotFocus="TextBox_GotFocus" Grid.Column="4" />
-            <TextBox Text="Price" GotFocus="TextBox_GotFocus" Grid.Column="5" />
-        </Grid>
+                            <Label Content="{Binding Name}" Grid.Column="0" />
+                            <Label Content="{Binding Address}" Grid.Column="1" />
+                            <Label Content="{Binding Country}" Grid.Column="2" />
+                            <Label Content="{Binding City}" Grid.Column="3" />
+                            <Label Content="{Binding Area}" Grid.Column="4" />
+                            <Label Content="{Binding Price}" Grid.Column="5" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
 
-    </StackPanel>
-        
+        <StackPanel DockPanel.Dock="Bottom" Margin="0 20 0 0">
+
+            <Grid x:Name="PlaceFormGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="NameTextBox" Text="Name" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="0" />
+                <TextBox x:Name="AddressTextBox" Text="Address" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="1" />
+                <TextBox x:Name="CountryTextBox" Text="Country" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="2" />
+                <TextBox x:Name="CityTextBox" Text="City" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="3" />
+                <TextBox x:Name="AreaTextBox" Text="Area" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="4" />
+                <TextBox x:Name="PriceTextBox" Text="Price" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="5" />
+            </Grid>
+
+            <Button x:Name="AddPlaceButton" Click="AddPlaceButton_Click" Content="Add" Width="50" Margin="0 10" />
+
+        </StackPanel>
+
+    </DockPanel>
+
 </UserControl>

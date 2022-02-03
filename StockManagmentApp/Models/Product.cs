@@ -19,5 +19,21 @@ namespace StockManagmentApp.Models
             Name = reader.GetString(15);
             Price = reader.GetInt32(16);
         }
+
+        public static List<Product> List()
+        {
+            List<Product> list = new List<Product>();
+
+            MySqlDataReader reader = Database.Command("SELECT * FROM Products");
+
+            while (reader.Read())
+            {
+                list.Add(new Product(reader));
+            }
+
+            reader.Close();
+
+            return list;
+        }
     }
 }

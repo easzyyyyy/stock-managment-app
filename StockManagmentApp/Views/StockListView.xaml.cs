@@ -23,23 +23,8 @@ namespace StockManagmentApp.Views
     {
         public StockListView()
         {
-            Database database = new Database();
-            database.Open();
-
             InitializeComponent();
-            DisplayStockList(database);
-
-            database.Close();
-        }
-        private void DisplayStockList(Database database)
-        {
-            StockList.Read(database);
-            StockListListView.ItemsSource = StockList.List;
-        }
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.Clear();
+            StockListListView.ItemsSource = Stock.List();
         }
     }
 }

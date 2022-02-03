@@ -8,11 +8,11 @@ using MySql.Data.MySqlClient;
 
 namespace StockManagmentApp.Models
 {
-    class Database
+    static class Database
     {
-        public MySqlConnection Connection = new MySqlConnection("server=localhost;database=stock_managment_app;user id=root;password=;");
+        public static MySqlConnection Connection = new MySqlConnection("server=localhost;database=stock_managment_app;user id=root;password=;");
 
-        public void Open()
+        public static void Open()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace StockManagmentApp.Models
             }
         }
 
-        public void Close()
+        public static void Close()
         {
             try
             {
@@ -38,10 +38,18 @@ namespace StockManagmentApp.Models
             }
         }
 
-        public MySqlDataReader Command(string commandText)
+        public static MySqlDataReader Command(string commandText, List<MySqlParameter> parameters = null)
         {
             MySqlCommand command = Connection.CreateCommand();
             command.CommandText = commandText;
+
+            if (parameters != null)
+            {
+                foreach (MySqlParameter p in parameters)
+                {
+                    command.Parameters.Add(p);
+                }
+            }
 
             MySqlDataReader result = null;
 

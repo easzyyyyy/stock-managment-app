@@ -12,7 +12,7 @@
 
         <Style TargetType="Button" x:Key="TopButton">
             <Setter Property="Height" Value="40" />
-            <Setter Property="Background" Value="#FFFFD100" />
+            <!--<Setter Property="Background" Value="#FFFFD100" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="FontSize" Value="15" />
 
@@ -30,7 +30,7 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FFFF9700" />
                 </Trigger>
-            </Style.Triggers>
+            </Style.Triggers>-->
         </Style>
 
         <DataTemplate x:Name="StockListViewTemplate" DataType="{x:Type viewmodels:StockListViewModel}">
