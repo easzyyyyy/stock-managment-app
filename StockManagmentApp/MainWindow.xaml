@@ -27,22 +27,26 @@
         </DataTemplate>
 
     </Window.Resources>
-    
-    <StackPanel>
-    
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
 
-            <Button x:Name="SeeStockListButton" Click="SeeStockListButton_Click" Content="See stock list" Style="{StaticResource TopButton}" Grid.Column="0" />
-            <Button x:Name="AddPlaceButton" Click="AddPlaceButton_Click" Content="Add a place" Style="{StaticResource TopButton}" Grid.Column="1" />
-            <Button x:Name="AddProductButton" Click="AddProductButton_Click" Content="Add a product" Style="{StaticResource TopButton}" Grid.Column="2" />
-        </Grid>
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <ContentControl Content="{Binding}"></ContentControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-    </StackPanel>
+        <Button x:Name="SeeStockListButton" Click="SeeStockListButton_Click" Content="See stock list" Style="{StaticResource TopButton}" Grid.Column="0" />
+        <Button x:Name="AddPlaceButton" Click="AddPlaceButton_Click" Content="Add a place" Style="{StaticResource TopButton}" Grid.Column="1" />
+        <Button x:Name="AddProductButton" Click="AddProductButton_Click" Content="Add a product" Style="{StaticResource TopButton}" Grid.Column="2" />
+
+        <ContentControl x:Name="WindowContentControl" Content="{Binding}" Grid.Row="1" Grid.ColumnSpan="3"></ContentControl>
+
+    </Grid>       
+
 </Window>

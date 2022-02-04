@@ -8,9 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <DockPanel Background="White" LastChildFill="False" Margin="10">
+    <Grid Background="White" Margin="10">
 
-        <Grid DockPanel.Dock="Top" Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightGray">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -22,9 +29,10 @@
             <Label Content="Type" FontWeight="Bold" Grid.Column="0" />
             <Label Content="Name" FontWeight="Bold" Grid.Column="1" />
             <Label Content="Price" FontWeight="Bold" Grid.Column="2" />
+            
         </Grid>
 
-        <ScrollViewer x:Name="AddProductScrollView" DockPanel.Dock="Top" MaxHeight="200">
+        <ScrollViewer x:Name="AddProductScrollView" Grid.Row="1">
             <ListView x:Name="AddProductListView" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -44,9 +52,10 @@
             </ListView>
         </ScrollViewer>
 
-        <StackPanel DockPanel.Dock="Bottom" Margin="0 20 0 0">
+        <StackPanel Grid.Row="2" Margin="0 20 0 0">
 
             <Grid x:Name="ProductFormGrid">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -58,12 +67,13 @@
                 <TextBox x:Name="TypeTextBox" Text="Type" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="0" />
                 <TextBox x:Name="NameTextBox" Text="Name" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="1" />
                 <TextBox x:Name="PriceTextBox" Text="Price" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  Grid.Column="2" />
+            
             </Grid>
 
             <Button x:Name="AddProductButton" Click="AddProductButton_Click" Content="Add" Width="50" Margin="0 10" />
 
         </StackPanel>
 
-    </DockPanel>
-    
+    </Grid>
+
 </UserControl>

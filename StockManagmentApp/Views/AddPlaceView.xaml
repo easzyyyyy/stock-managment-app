@@ -8,9 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <DockPanel Background="White" LastChildFill="False" Margin="10">
+    <Grid Background="White" Margin="10">
 
-        <Grid DockPanel.Dock="Top" Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightGray">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -28,9 +35,10 @@
             <Label Content="City" FontWeight="Bold" Grid.Column="3" />
             <Label Content="Area" FontWeight="Bold" Grid.Column="4" />
             <Label Content="Price" FontWeight="Bold" Grid.Column="5" />
+
         </Grid>
 
-        <ScrollViewer x:Name="AddPlaceScrollView" DockPanel.Dock="Top" MaxHeight="200">
+        <ScrollViewer x:Name="AddPlaceScrollView" Grid.Row="1">
             <ListView x:Name="AddPlaceListView" HorizontalContentAlignment="Stretch">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -56,9 +64,10 @@
             </ListView>
         </ScrollViewer>
 
-        <StackPanel DockPanel.Dock="Bottom" Margin="0 20 0 0">
+        <StackPanel Grid.Row="2" Margin="0 20 0 0">
 
             <Grid x:Name="PlaceFormGrid">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -76,12 +85,13 @@
                 <TextBox x:Name="CityTextBox" Text="City" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="3" />
                 <TextBox x:Name="AreaTextBox" Text="Area" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="4" />
                 <TextBox x:Name="PriceTextBox" Text="Price" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Grid.Column="5" />
+
             </Grid>
 
             <Button x:Name="AddPlaceButton" Click="AddPlaceButton_Click" Content="Add" Width="50" Margin="0 10" />
 
         </StackPanel>
 
-    </DockPanel>
+    </Grid>
 
 </UserControl>

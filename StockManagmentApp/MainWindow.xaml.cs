@@ -3,6 +3,7 @@ using System.Windows;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using StockManagmentApp.ViewModels;
+using System.Windows.Data;
 
 // MySQL libraries added in references
 

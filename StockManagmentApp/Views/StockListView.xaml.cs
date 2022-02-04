@@ -65,8 +65,19 @@ namespace StockManagmentApp.Views
 
             bool amountIsParsable = int.TryParse(AmountTextBox.Text, out int amount);
 
-            DateTime lastArrival = (DateTime)LastArrivalDatePicker.SelectedDate;
-            DateTime nextArrival = (DateTime)NextArrivalDatePicker.SelectedDate;
+            DateTime lastArrival;
+            DateTime nextArrival;
+
+            try
+            {
+                lastArrival = (DateTime)LastArrivalDatePicker.SelectedDate;
+                nextArrival = (DateTime)NextArrivalDatePicker.SelectedDate;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
 
             if (amountIsParsable)
             {
